@@ -2,7 +2,7 @@
 Public Class frm_Reconcile
 
     Dim path As String = "C:\Comptime\comptimerun.txt"
-    Dim path2 As String = "C:\Comptime\" & CStr(txtYear.Text)
+    Dim path2 As String = "C:\Comptime\" & CStr(Year(Today) - 1)
     Dim readtxt As String
     Dim entry As String
     Dim newLineIndex As Integer
@@ -13,6 +13,9 @@ Public Class frm_Reconcile
     Dim temp As String
 
     Private Sub frm_Reconcile_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+
+        'default selects the previous year
+        Me.txtYear.Text = Year(Today) - 1
 
         'clear out variables for recalculation
         searchyear = 0
@@ -25,9 +28,6 @@ Public Class frm_Reconcile
 
         'disable reconcile button prior to preview
         Me.btnReconcile.Enabled = False
-
-        'default selects the previous year
-        Me.txtYear.Text = Year(Today) - 1
 
         Me.libxReconcile.Items.Clear()
 

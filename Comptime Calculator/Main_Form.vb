@@ -12,8 +12,8 @@ Option Explicit On
 
 Public Class frm_Main
 
-    Private cdirectory As String = "C:\Comptime"
-    Private cpath As String = "C:\Comptime\comptimerun.txt"
+    Private Const cdirectory As String = "C:\Comptime"
+    Private Const cpath As String = "C:\Comptime\comptimerun.txt"
     Private title As String = "Comptime Calculator"
     Public user As String
     Private newbalance As Decimal
@@ -179,6 +179,8 @@ Public Class frm_Main
         End If
 
     End Sub
+
+    '------------------------------- Private Functions and Subroutines -----------------------------------------
 
     Public Sub ApplyCalculations()
         'Saves current balance to txt file
@@ -765,6 +767,8 @@ Public Class frm_Main
             End If
         End If
     End Sub
+
+    '------------------------------ Buttons and Click Events ---------------------------------------------------
 
     Private Sub exitButton_Click(sender As Object, e As EventArgs) Handles exitButton.Click
         exitApp()

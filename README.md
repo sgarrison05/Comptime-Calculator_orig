@@ -1,12 +1,13 @@
 # Comptime Calculator v4.2.5 (Visual Basic)
-In-production version of the Comptime Calculator at Orange County
+
+### The original, in-production version of the Comptime Calculator.
 
 Comptime Calculator 2009
 By Shon Garrison
 
 Program Overview:
 
-This program was written to assist in keeping track of the compensatory time that is accrued when a professional works outside or beyond the average work day/week. This program was mainly written for the Juvenile Probation Department for on-call and extracurricular activities, but it could be adapted to anyone that works as a professional and has to track overtime.
+This program was written to assist in keeping track of the compensatory time that is accrued when a professional works outside or beyond the average work day/week. This program was mainly written for my Juvenile Probation Department for on-call and extracurricular activities, but it could be adapted to anyone that works as a professional and has to track overtime.
 
 Comptime is basically overtime that is accrued at time of 1.5 times for working beyond an 8 hour day or more than 40 hrs in a given week. This program calculates the time based on that formula (Except chief's edition [straight time] and keeps track of the users balance through a bank file and a running activity file.  Warning:  Both file created by the program are in plain text.  It can be read by any text editor (WARNING: Not all text editors will display exactly the same just like internet browsers. Notepad works best.) and can be modified outside the program.  Any changes to either file, outside the program, can result in a miscalculation, loss of data, or deletion of transactions.
 
@@ -52,11 +53,10 @@ v4.0.2 - Added email provider options
 
 v4.1.0 – Cosmetic Changes, Updated About Form, and Repaired listbox lineup on Reconcile Sheet
 
-v4.2.0 - Added Subroutine to address bug whereas the Comptime Folder nor Comtimerun/Bank file
-would not be created on the first run if the user did not enter a balance at first start. Updated
-README.md file as well as the appropriate Comptime_Calculator_Users_Guide.pdf.
+v4.2.0 - Added Subroutine to address bug whereas the Comptime Folder nor Comtimerun/Bank file would not be created on the first run if the user did not enter a balance at first start. Updated README.md file as well as the appropriate Comptime_Calculator_Users_Guide.pdf.
 
-v4.2.1 - Cleaned up variables and elemenated the need for the bank file.  Program now pulls bank
-from comptimerun.txt sheet as I always had intended it.
+v4.2.1 - Cleaned up variables and elemenated the need for the bank file.  Program now pulls bank from comptimerun.txt sheet as I always had intended it.
 
-v4.2.5 - Added Comp/Straight Time Difference.  Eliminated Chief's Ed.
+v4.2.5 - Added Comp/Straight Time Difference.  Eliminated Chief's Ed. Removed email
+form from within program.  Google security became more difficult over time. You can
+just email the plain text form of the bank as an attachment outside the program.

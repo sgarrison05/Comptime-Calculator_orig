@@ -2,13 +2,11 @@
 'Purpose                To calculate comptime time earned or spent
 '                       in a particular instance
 'Created By             Shon Garrison, December 2008
-'Updated Last           April 28, 2023
+'Updated Last           September 2023
 
 'Update Notes:          Added the ability to use straight or comp time.
 '                       Before reformat
 Option Explicit On
-
-
 
 Public Class frm_Main
 
@@ -21,6 +19,12 @@ Public Class frm_Main
     Private myentry As String
     Private atime As String
     Private tlable As String
+    Private heading As String = "Date Entered" & Strings.Space(7) &
+                                "CaseNo." & Strings.Space(14) &
+                                "Earned(+)" & Strings.Space(12) &
+                                "Type" & Strings.Space(11) &
+                                "Taken(-)" & Strings.Space(6) &
+                                "Balance"
 
     Private Sub compcalcForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -29,7 +33,7 @@ Public Class frm_Main
         Me.calcearnedTextBox.ReadOnly = True
 
         'disable apply calc button till preview is seen
-        Me.applyButton.Enabled = False
+        Me.btnApply.Enabled = False
         Me.ApplyToolStripMenuItem.Enabled = False
 
         'add items to case/reason combobox
@@ -205,12 +209,6 @@ Public Class frm_Main
             Dim line As String
             Dim caseno As String
             Dim curdate As String
-            Dim heading As String = "Date Entered" & Strings.Space(7) &
-                "CaseNo." & Strings.Space(14) &
-                "Earned(+)" & Strings.Space(12) &
-                "Type" & Strings.Space(11) &
-                "Taken(-)" & Strings.Space(6) &
-                "Balance"
 
             'Convert the data from the Previous Balance Label and store it in line variable
             line = Convert.ToString(previous)
@@ -227,7 +225,7 @@ Public Class frm_Main
                                                     takenTextBox.Text.PadLeft(5, " ") & Strings.Space(10) &
                                                     Convert.ToString(previous).PadLeft(5, " ") & ControlChars.NewLine, True)
 
-                My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+                Separation()
 
                 MessageBox.Show("Processing complete. The form will be cleared.",
                                 title, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -241,7 +239,7 @@ Public Class frm_Main
                 sctComboBox.SelectedItem = "Comp Time (X 1.5)"
                 newbalance = 0D
                 accruedDateTimePicker.Focus()
-                Me.applyButton.Enabled = False
+                Me.btnApply.Enabled = False
 
                 'ability to detect 50 hours csr for warning
                 If Me.prevbalLabel.Text >= 50.0 Then
@@ -275,7 +273,7 @@ Public Class frm_Main
                                                     takenTextBox.Text.PadLeft(5, " ") & Strings.Space(10) &
                                                     Convert.ToString(previous).PadLeft(5, " ") & ControlChars.NewLine, True)
 
-                My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+                Separation()
 
                 MessageBox.Show("Processing complete. The form will be cleared.",
                                 title, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -290,7 +288,7 @@ Public Class frm_Main
                 sctComboBox.SelectedItem = "Comp Time (X 1.5)"
                 newbalance = 0D
                 accruedDateTimePicker.Focus()
-                Me.applyButton.Enabled = False
+                Me.btnApply.Enabled = False
 
                 'ability to detect 50 hours csr for warning
                 If Me.prevbalLabel.Text >= 50.0 Then
@@ -321,7 +319,7 @@ Public Class frm_Main
                 sctComboBox.SelectedItem = "Comp Time (X 1.5)"
                 newbalance = 0D
                 accruedDateTimePicker.Focus()
-                Me.applyButton.Enabled = False
+                Me.btnApply.Enabled = False
 
                 'ability to detect 50 hours csr for warning
                 If Me.prevbalLabel.Text >= 50.0 Then
@@ -346,7 +344,7 @@ Public Class frm_Main
                 accruedRadioButton.Select()
                 newbalance = 0D
                 accruedDateTimePicker.Focus()
-                Me.applyButton.Enabled = False
+                Me.btnApply.Enabled = False
 
                 'ability to detect 50 hours csr for warning
                 If Me.prevbalLabel.Text >= 50.0 Then
@@ -372,12 +370,6 @@ Public Class frm_Main
         Dim line As String
         Dim caseno As String = "Placeholder"
         Dim curdate As String = accruedDateTimePicker.Text
-        Dim heading As String = "Date Entered" & Strings.Space(7) &
-            "CaseNo." & Strings.Space(14) &
-            "Earned(+)" & Strings.Space(12) &
-            "Type" & Strings.Space(11) &
-            "Taken(-)" & Strings.Space(6) &
-            "Balance"
 
         'make calculations
         newbalance = Convert.ToDecimal(newbalLabel.Text)
@@ -402,6 +394,7 @@ Public Class frm_Main
 
         End If
 
+        ' If Comptime Directory exists, writes to the file.
         If My.Computer.FileSystem.DirectoryExists(cdirectory) Then
 
             My.Computer.FileSystem.WriteAllText(cpath,
@@ -423,11 +416,10 @@ Public Class frm_Main
                                             tlable.PadRight(8) & Strings.Space(6) &
                                             "0.00".PadLeft(5, " ") & Strings.Space(10) &
                                             Convert.ToString(previous).PadLeft(5, " ") & ControlChars.NewLine, True)
-
-            My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") &
-                                                ControlChars.NewLine, True)
+            Separation()
 
         Else
+            ' Comptime Directory Does not Exist. Creates Comptime Directory and Comptime Bank
             My.Computer.FileSystem.CreateDirectory(cdirectory)
 
             My.Computer.FileSystem.WriteAllText(cpath,
@@ -449,12 +441,8 @@ Public Class frm_Main
                                             tlable.PadRight(8) & Strings.Space(6) &
                                             "0.00".PadLeft(5, " ") & Strings.Space(10) &
                                             Convert.ToString(previous).PadLeft(5, " ") & ControlChars.NewLine, True)
-
-            My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") &
-                                                ControlChars.NewLine, True)
-
+            Separation()
         End If
-
 
     End Sub
 
@@ -505,38 +493,39 @@ Public Class frm_Main
                 calcearnedTextBox.Text = ""
 
                 calcearnedTextBox.Text = "Total accrued time to enter on affidavit = " &
-                (calcearned).ToString("N2") & " hours" & ControlChars.NewLine & "=".PadLeft(80, "=") &
-                ControlChars.NewLine & "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
-                "Date Entered" & Strings.Space(14) &
-                "CaseNo." & Strings.Space(14) &
-                "Earned(+)" & Strings.Space(12) &
-                "Type" & Strings.Space(22) &
-                "Taken(-)" & Strings.Space(16) &
-                "Balance" & ControlChars.NewLine &
-                "-----------------" & Strings.Space(13) &
-                "----------" & Strings.Space(16) &
-                "------------" & Strings.Space(13) &
-                "----------" & Strings.Space(17) &
-                "----------" & Strings.Space(17) &
-                "----------" & ControlChars.NewLine &
-                accruedDateTimePicker.Text & Strings.Space(16) &
-                caseComboBox.Text.PadRight(15, " ") & Strings.Space(7) &
-                earnedTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
-                tlable.PadRight(8) & Strings.Space(16) &
-                takenTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
-                Convert.ToString(previewbankbal).PadLeft(5, " ")
+                                        (calcearned).ToString("N2") & " hours" & ControlChars.NewLine &
+                                        "=".PadLeft(80, "=") & ControlChars.NewLine &
+                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
+                                        "Date Entered" & Strings.Space(14) &
+                                        "CaseNo." & Strings.Space(14) &
+                                        "Earned(+)" & Strings.Space(12) &
+                                        "Type" & Strings.Space(22) &
+                                        "Taken(-)" & Strings.Space(16) &
+                                        "Balance" & ControlChars.NewLine &
+                                        "-----------------" & Strings.Space(13) &
+                                        "----------" & Strings.Space(16) &
+                                        "------------" & Strings.Space(13) &
+                                        "----------" & Strings.Space(17) &
+                                        "----------" & Strings.Space(17) &
+                                        "----------" & ControlChars.NewLine &
+                                        accruedDateTimePicker.Text & Strings.Space(16) &
+                                        caseComboBox.Text.PadRight(15, " ") & Strings.Space(7) &
+                                        earnedTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
+                                        tlable.PadRight(8) & Strings.Space(16) &
+                                        takenTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
+                                        Convert.ToString(previewbankbal).PadLeft(5, " ")
 
                 newbalance = calcearned - taken
                 newbalance = Math.Round(newbalance, 2)
                 newbalLabel.Text = Convert.ToString(newbalance)
 
             Else : MessageBox.Show("Must be numeric", title, MessageBoxButtons.OK,
-            MessageBoxIcon.Information)
+                                    MessageBoxIcon.Information)
                 earnedTextBox.Focus()
             End If
 
-
         ElseIf spentRadioButton.Checked Then
+
             If earnedTextBox.Text = String.Empty Then
                 earnedTextBox.Text = "0.00"
             End If
@@ -546,8 +535,10 @@ Public Class frm_Main
 
             If atime.Contains("Straight") Then
                 tlable = "Straight"
+
             ElseIf atime.Contains("Comp") Then
                 tlable = "Comp"
+
             Else
                 tlable = "n/a"
 
@@ -556,7 +547,6 @@ Public Class frm_Main
             'Convert input
             isEarned = Decimal.TryParse(earnedTextBox.Text, earned)
             isTaken = Decimal.TryParse(takenTextBox.Text, taken)
-
 
             'If conversions successful, make calculations
             If isEarned And isTaken Then
@@ -576,36 +566,38 @@ Public Class frm_Main
                 calcearnedTextBox.Text = ""
 
                 calcearnedTextBox.Text = "Total taken time to enter on affidavit = " &
-                (taken).ToString("N2") & " hours" & ControlChars.NewLine & "-".PadLeft(80, "=") &
-                ControlChars.NewLine & "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
-                "Date Entered" & Strings.Space(14) &
-                "CaseNo." & Strings.Space(14) &
-                "Earned(+)" & Strings.Space(12) &
-                "Type" & Strings.Space(22) &
-                "Taken(-)" & Strings.Space(16) &
-                "Balance" & ControlChars.NewLine &
-                "-----------------" & Strings.Space(13) &
-                "----------" & Strings.Space(16) &
-                "------------" & Strings.Space(13) &
-                "----------" & Strings.Space(17) &
-                "----------" & Strings.Space(17) &
-                "----------" & ControlChars.NewLine &
-                accruedDateTimePicker.Text & Strings.Space(16) &
-                caseComboBox.Text.PadRight(15, " ") & Strings.Space(7) &
-                earnedTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
-                tlable.PadRight(8) & Strings.Space(16) &
-                takenTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
-                Convert.ToString(previewbankbal)
+                                        (taken).ToString("N2") &
+                                        " hours" & ControlChars.NewLine & "-".PadLeft(80, "=") & ControlChars.NewLine &
+                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
+                                        "Date Entered" & Strings.Space(14) &
+                                        "CaseNo." & Strings.Space(14) &
+                                        "Earned(+)" & Strings.Space(12) &
+                                        "Type" & Strings.Space(22) &
+                                        "Taken(-)" & Strings.Space(16) &
+                                        "Balance" & ControlChars.NewLine &
+                                        "-----------------" & Strings.Space(13) &
+                                        "----------" & Strings.Space(16) &
+                                        "------------" & Strings.Space(13) &
+                                        "----------" & Strings.Space(17) &
+                                        "----------" & Strings.Space(17) &
+                                        "----------" & ControlChars.NewLine &
+                                        accruedDateTimePicker.Text & Strings.Space(16) &
+                                        caseComboBox.Text.PadRight(15, " ") & Strings.Space(7) &
+                                        earnedTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
+                                        tlable.PadRight(8) & Strings.Space(16) &
+                                        takenTextBox.Text.PadLeft(5, " ") & Strings.Space(22) &
+                                        Convert.ToString(previewbankbal)
 
             Else : MessageBox.Show("Must be numeric", title, MessageBoxButtons.OK,
-            MessageBoxIcon.Information)
+                                    MessageBoxIcon.Information)
                 takenTextBox.Focus()
+
             End If
+
         End If
 
-        Me.applyButton.Enabled = True
+        Me.btnApply.Enabled = True
         Me.ApplyToolStripMenuItem.Enabled = True
-
 
     End Sub
 
@@ -623,12 +615,6 @@ Public Class frm_Main
             Dim curdate As String
             Dim caseno As String
             Dim line2 As String
-            Dim heading As String = "Date Entered" & Strings.Space(7) &
-                "CaseNo." & Strings.Space(14) &
-                "Earned(+)" & Strings.Space(12) &
-                "Type" & Strings.Space(11) &
-                "Taken(-)" & Strings.Space(6) &
-                "Balance"
 
             'make calculations
             newbalance = Convert.ToDecimal(newbalLabel.Text)
@@ -652,8 +638,7 @@ Public Class frm_Main
                                                     tlable.PadRight(8) & Strings.Space(6) &
                                                     takenTextBox.Text.PadLeft(5, " ") & Strings.Space(10) &
                                                     Convert.ToString(previous) & ControlChars.NewLine, True)
-
-                My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+                Separation()
 
             Else 'Setting up for the first time
                 My.Computer.FileSystem.CreateDirectory(cdirectory)
@@ -673,8 +658,7 @@ Public Class frm_Main
                                                     tlable.PadRight(8) & Strings.Space(6) &
                                                     takenTextBox.Text.PadLeft(5, " ") & Strings.Space(10) &
                                                     Convert.ToString(previous) & ControlChars.NewLine, True)
-
-                My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+                Separation()
             End If
 
             calcearnedTextBox.Text = ""
@@ -686,7 +670,7 @@ Public Class frm_Main
             takenTextBox.Clear()
             accruedRadioButton.Select()
             accruedDateTimePicker.Focus()
-            Me.applyButton.Enabled = False
+            Me.btnApply.Enabled = False
 
             'ability to detect 50 hours csr for warning
             If Me.prevbalLabel.Text >= 50.0 Then
@@ -710,7 +694,7 @@ Public Class frm_Main
             takenTextBox.Clear()
             accruedRadioButton.Select()
             accruedDateTimePicker.Focus()
-            Me.applyButton.Enabled = False
+            Me.btnApply.Enabled = False
 
             'ability to detect 50 hours csr for warning
             If Me.prevbalLabel.Text >= 50.0 Then
@@ -744,7 +728,7 @@ Public Class frm_Main
             accruedRadioButton.Select()
             newbalance = 0D
             accruedDateTimePicker.Focus()
-            Me.applyButton.Enabled = False
+            Me.btnApply.Enabled = False
 
             'ability to detect 50 hours csr for warning
             If Me.prevbalLabel.Text >= 50.0 Then
@@ -763,34 +747,43 @@ Public Class frm_Main
             Else : CreateMyPaths()
                 Me.Close()
 
-
             End If
+
         End If
+    End Sub
+
+    Private Sub Separation()
+
+        My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+
     End Sub
 
     '------------------------------ Buttons and Click Events ---------------------------------------------------
 
-    Private Sub exitButton_Click(sender As Object, e As EventArgs) Handles exitButton.Click
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         exitApp()
+
     End Sub
 
-    Private Sub btn_ReconcileData_Click(sender As Object, e As EventArgs) Handles btn_ReconcileData.Click
+    Private Sub btnReconcile_Click(sender As Object, e As EventArgs) Handles btnReconcile.Click
         Me.Hide()
         My.Forms.frm_Reconcile.Show()
 
     End Sub
 
-    Private Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         CalcClear()
 
     End Sub
 
-    Private Sub calcButton_Click(sender As Object, e As EventArgs) Handles calcButton.Click
+    Private Sub btnCalc_Click(sender As Object, e As EventArgs) Handles btnCalc.Click
         PreviewCalculations()
 
     End Sub
 
-    Private Sub applyButton_Click(sender As Object, e As EventArgs) Handles applyButton.Click
+    Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
         ApplyCalculations()
+
     End Sub
+
 End Class

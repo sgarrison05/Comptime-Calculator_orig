@@ -22,12 +22,12 @@ Partial Class frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.clearButton = New System.Windows.Forms.Button()
-        Me.exitButton = New System.Windows.Forms.Button()
-        Me.calcButton = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
+        Me.btnCalc = New System.Windows.Forms.Button()
         Me.optionsGroupBox = New System.Windows.Forms.GroupBox()
-        Me.btn_ReconcileData = New System.Windows.Forms.Button()
-        Me.applyButton = New System.Windows.Forms.Button()
+        Me.btnReconcile = New System.Windows.Forms.Button()
+        Me.btnApply = New System.Windows.Forms.Button()
         Me.comptimeMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.fileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,51 +73,51 @@ Partial Class frm_Main
         Me.actionGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
-        'clearButton
+        'btnClear
         '
-        Me.clearButton.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.clearButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clearButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.clearButton.Location = New System.Drawing.Point(142, 19)
-        Me.clearButton.Name = "clearButton"
-        Me.clearButton.Size = New System.Drawing.Size(75, 32)
-        Me.clearButton.TabIndex = 0
-        Me.clearButton.Text = "Clear Form"
-        Me.clearButton.UseVisualStyleBackColor = False
+        Me.btnClear.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClear.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnClear.Location = New System.Drawing.Point(142, 19)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(75, 32)
+        Me.btnClear.TabIndex = 0
+        Me.btnClear.Text = "Clear Form"
+        Me.btnClear.UseVisualStyleBackColor = False
         '
-        'exitButton
+        'btnExit
         '
-        Me.exitButton.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.exitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.exitButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.exitButton.Location = New System.Drawing.Point(509, 19)
-        Me.exitButton.Name = "exitButton"
-        Me.exitButton.Size = New System.Drawing.Size(75, 32)
-        Me.exitButton.TabIndex = 5
-        Me.exitButton.Text = "Exit Application"
-        Me.exitButton.UseVisualStyleBackColor = False
+        Me.btnExit.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnExit.Location = New System.Drawing.Point(509, 19)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(75, 32)
+        Me.btnExit.TabIndex = 5
+        Me.btnExit.Text = "Exit Application"
+        Me.btnExit.UseVisualStyleBackColor = False
         '
-        'calcButton
+        'btnCalc
         '
-        Me.calcButton.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.calcButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.calcButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.calcButton.Location = New System.Drawing.Point(232, 19)
-        Me.calcButton.Name = "calcButton"
-        Me.calcButton.Size = New System.Drawing.Size(75, 32)
-        Me.calcButton.TabIndex = 1
-        Me.calcButton.Text = "Calculation Preview"
-        Me.calcButton.UseVisualStyleBackColor = False
+        Me.btnCalc.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnCalc.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCalc.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnCalc.Location = New System.Drawing.Point(232, 19)
+        Me.btnCalc.Name = "btnCalc"
+        Me.btnCalc.Size = New System.Drawing.Size(75, 32)
+        Me.btnCalc.TabIndex = 1
+        Me.btnCalc.Text = "Calculation Preview"
+        Me.btnCalc.UseVisualStyleBackColor = False
         '
         'optionsGroupBox
         '
         Me.optionsGroupBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(21, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.optionsGroupBox.Controls.Add(Me.btn_ReconcileData)
-        Me.optionsGroupBox.Controls.Add(Me.applyButton)
-        Me.optionsGroupBox.Controls.Add(Me.clearButton)
-        Me.optionsGroupBox.Controls.Add(Me.calcButton)
-        Me.optionsGroupBox.Controls.Add(Me.exitButton)
+        Me.optionsGroupBox.Controls.Add(Me.btnReconcile)
+        Me.optionsGroupBox.Controls.Add(Me.btnApply)
+        Me.optionsGroupBox.Controls.Add(Me.btnClear)
+        Me.optionsGroupBox.Controls.Add(Me.btnCalc)
+        Me.optionsGroupBox.Controls.Add(Me.btnExit)
         Me.optionsGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.optionsGroupBox.Location = New System.Drawing.Point(12, 448)
         Me.optionsGroupBox.Name = "optionsGroupBox"
@@ -126,30 +126,30 @@ Partial Class frm_Main
         Me.optionsGroupBox.TabStop = False
         Me.optionsGroupBox.Text = "Options"
         '
-        'btn_ReconcileData
+        'btnReconcile
         '
-        Me.btn_ReconcileData.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.btn_ReconcileData.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btn_ReconcileData.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_ReconcileData.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btn_ReconcileData.Location = New System.Drawing.Point(415, 19)
-        Me.btn_ReconcileData.Name = "btn_ReconcileData"
-        Me.btn_ReconcileData.Size = New System.Drawing.Size(75, 32)
-        Me.btn_ReconcileData.TabIndex = 3
-        Me.btn_ReconcileData.Text = "Reconcile Data"
-        Me.btn_ReconcileData.UseVisualStyleBackColor = False
+        Me.btnReconcile.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnReconcile.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnReconcile.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReconcile.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnReconcile.Location = New System.Drawing.Point(415, 19)
+        Me.btnReconcile.Name = "btnReconcile"
+        Me.btnReconcile.Size = New System.Drawing.Size(75, 32)
+        Me.btnReconcile.TabIndex = 3
+        Me.btnReconcile.Text = "Reconcile Data"
+        Me.btnReconcile.UseVisualStyleBackColor = False
         '
-        'applyButton
+        'btnApply
         '
-        Me.applyButton.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.applyButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.applyButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.applyButton.Location = New System.Drawing.Point(323, 19)
-        Me.applyButton.Name = "applyButton"
-        Me.applyButton.Size = New System.Drawing.Size(75, 32)
-        Me.applyButton.TabIndex = 2
-        Me.applyButton.Text = "Apply to Bank"
-        Me.applyButton.UseVisualStyleBackColor = False
+        Me.btnApply.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnApply.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnApply.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.btnApply.Location = New System.Drawing.Point(323, 19)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(75, 32)
+        Me.btnApply.TabIndex = 2
+        Me.btnApply.Text = "Apply to Bank"
+        Me.btnApply.UseVisualStyleBackColor = False
         '
         'comptimeMenuStrip
         '
@@ -172,7 +172,7 @@ Partial Class frm_Main
         Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComptimerunToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenToolStripMenuItem.Text = "Open.."
         '
         'ComptimerunToolStripMenuItem
@@ -184,13 +184,13 @@ Partial Class frm_Main
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(145, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'EditToolStripMenuItem
@@ -203,7 +203,7 @@ Partial Class frm_Main
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(101, 22)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ClearToolStripMenuItem.Text = "Clear"
         '
         'HelpToolStripMenuItem
@@ -224,13 +224,13 @@ Partial Class frm_Main
         'CalculateToolStripMenuItem
         '
         Me.CalculateToolStripMenuItem.Name = "CalculateToolStripMenuItem"
-        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
+        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CalculateToolStripMenuItem.Text = "Calc"
         '
         'ApplyToolStripMenuItem
         '
         Me.ApplyToolStripMenuItem.Name = "ApplyToolStripMenuItem"
-        Me.ApplyToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
+        Me.ApplyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ApplyToolStripMenuItem.Text = "Apply "
         '
         'HelpToolStripMenuItem1
@@ -243,19 +243,20 @@ Partial Class frm_Main
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ReadMeFileToolStripMenuItem
         '
         Me.ReadMeFileToolStripMenuItem.Name = "ReadMeFileToolStripMenuItem"
-        Me.ReadMeFileToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.ReadMeFileToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ReadMeFileToolStripMenuItem.Text = "Read-Me File"
         '
         'calcearnedTextBox
         '
-        Me.calcearnedTextBox.BackColor = System.Drawing.Color.Lavender
+        Me.calcearnedTextBox.BackColor = System.Drawing.Color.Black
         Me.calcearnedTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.calcearnedTextBox.ForeColor = System.Drawing.SystemColors.Window
         Me.calcearnedTextBox.Location = New System.Drawing.Point(12, 252)
         Me.calcearnedTextBox.Multiline = True
         Me.calcearnedTextBox.Name = "calcearnedTextBox"
@@ -499,7 +500,7 @@ Partial Class frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.exitButton
+        Me.CancelButton = Me.btnExit
         Me.ClientSize = New System.Drawing.Size(743, 527)
         Me.Controls.Add(Me.warningLbl)
         Me.Controls.Add(Me.sctComboBox)
@@ -541,11 +542,11 @@ Partial Class frm_Main
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents clearButton As System.Windows.Forms.Button
-    Friend WithEvents exitButton As System.Windows.Forms.Button
-    Friend WithEvents calcButton As System.Windows.Forms.Button
+    Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents btnExit As System.Windows.Forms.Button
+    Friend WithEvents btnCalc As System.Windows.Forms.Button
     Friend WithEvents optionsGroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents applyButton As System.Windows.Forms.Button
+    Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents comptimeMenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents fileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -560,7 +561,7 @@ Partial Class frm_Main
     Friend WithEvents ComptimerunToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents calcearnedTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ReadMeFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btn_ReconcileData As System.Windows.Forms.Button
+    Friend WithEvents btnReconcile As System.Windows.Forms.Button
     Friend WithEvents lbl_CalcResultID As System.Windows.Forms.Label
     Friend WithEvents EditToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

@@ -110,12 +110,13 @@ Partial Class frm_Reconcile
         '
         'btnPreview
         '
+        Me.btnPreview.BackColor = System.Drawing.Color.DimGray
         Me.btnPreview.Image = CType(resources.GetObject("btnPreview.Image"), System.Drawing.Image)
         Me.btnPreview.Location = New System.Drawing.Point(680, 196)
         Me.btnPreview.Name = "btnPreview"
         Me.btnPreview.Size = New System.Drawing.Size(60, 50)
         Me.btnPreview.TabIndex = 7
-        Me.btnPreview.UseVisualStyleBackColor = True
+        Me.btnPreview.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -129,7 +130,9 @@ Partial Class frm_Reconcile
         '
         'libxPreview
         '
+        Me.libxPreview.BackColor = System.Drawing.Color.Black
         Me.libxPreview.Font = New System.Drawing.Font("Courier New", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.libxPreview.ForeColor = System.Drawing.SystemColors.Window
         Me.libxPreview.FormattingEnabled = True
         Me.libxPreview.ItemHeight = 12
         Me.libxPreview.Location = New System.Drawing.Point(771, 73)
@@ -157,7 +160,9 @@ Partial Class frm_Reconcile
         '
         'libxOrig
         '
+        Me.libxOrig.BackColor = System.Drawing.Color.Black
         Me.libxOrig.Font = New System.Drawing.Font("Courier New", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.libxOrig.ForeColor = System.Drawing.SystemColors.Window
         Me.libxOrig.FormattingEnabled = True
         Me.libxOrig.ItemHeight = 12
         Me.libxOrig.Location = New System.Drawing.Point(771, 404)
@@ -177,7 +182,9 @@ Partial Class frm_Reconcile
         '
         'libxReconcile
         '
+        Me.libxReconcile.BackColor = System.Drawing.Color.Black
         Me.libxReconcile.Font = New System.Drawing.Font("Courier New", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.libxReconcile.ForeColor = System.Drawing.SystemColors.Window
         Me.libxReconcile.FormattingEnabled = True
         Me.libxReconcile.ItemHeight = 12
         Me.libxReconcile.Location = New System.Drawing.Point(18, 73)

@@ -2,6 +2,7 @@
 Public Class frm_Reconcile
 
     Dim path As String = "C:\Comptime\comptimerun.txt"
+    Dim path2 As String = "C:\Comptime\" & CStr(txtYear.Text)
     Dim readtxt As String
     Dim entry As String
     Dim newLineIndex As Integer
@@ -70,11 +71,12 @@ Public Class frm_Reconcile
 
     End Sub
 
+    '--------------------- Button Click Events -----------------------------------------
+
     Private Sub btnExit_Click(sender As System.Object, e As System.EventArgs) Handles btnExit.Click
 
         Me.Close()
         frm_Main.Show()
-
 
     End Sub
 
@@ -90,10 +92,8 @@ Public Class frm_Reconcile
         entryIndex = 0
         temp = ""
 
-
         Me.libxPreview.Items.Clear()
         Me.libxOrig.Items.Clear()
-
 
         'parses year to search
         Integer.TryParse(Me.txtYear.Text, searchyear)
@@ -133,8 +133,6 @@ Public Class frm_Reconcile
 
         Loop
 
-
-
         'Previews the Current Year
         'resets variables for second pull of original data
         searchyearorig = 0
@@ -173,18 +171,13 @@ Public Class frm_Reconcile
 
         're-enables reconcile button after preview selected
         Me.btnReconcile.Enabled = True
+
     End Sub
-
-
 
     Private Sub btnReconcile_Click(sender As Object, e As EventArgs) Handles btnReconcile.Click
 
         'Creates reconcilled text document for previous year 
         'in it's own folder
-
-        'sets path for folder
-        Dim path2 As String = "C:\Comptime\" & CStr(txtYear.Text)
-
 
         If Me.libxOrig.Items.Count > 0 And Me.libxPreview.Items.Count > 0 Then
 
@@ -192,8 +185,7 @@ Public Class frm_Reconcile
             If My.Computer.FileSystem.FileExists(path2) And
                 My.Computer.FileSystem.FileExists(path2 & "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt") Then
                 My.Computer.FileSystem.WriteAllText(path2 &
-                                                    "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt",
-                                                    String.Empty, False)
+                                                    "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt", String.Empty, False)
 
                 My.Computer.FileSystem.WriteAllText(path2 & "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt",
                                                     "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
@@ -235,20 +227,17 @@ Public Class frm_Reconcile
 
             'puts all items in text file
             For Each item As String In Me.libxPreview.Items
-                My.Computer.FileSystem.WriteAllText(path2 & "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt", _
+                My.Computer.FileSystem.WriteAllText(path2 & "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt",
                                                     item & ControlChars.NewLine, True)
-
                 My.Computer.FileSystem.WriteAllText(path2 & "\Comptimerun_Reconciled_" & txtYear.Text.ToString & ".txt",
                                                     "".PadLeft(100, "-") & ControlChars.NewLine, True)
-            Next item
 
+            Next item
 
             'Rebuilds current comptimerun text file
             If My.Computer.FileSystem.FileExists(path) Then
-                My.Computer.FileSystem.WriteAllText(path, String.Empty,
-                                                    False)
-                My.Computer.FileSystem.WriteAllText(path,
-                                                    "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
+                My.Computer.FileSystem.WriteAllText(path, String.Empty, False)
+                My.Computer.FileSystem.WriteAllText(path, "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
                                                     "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine & ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
@@ -264,11 +253,9 @@ Public Class frm_Reconcile
                                                     "----------" & Strings.Space(4) &
                                                     "----------" & ControlChars.NewLine, False)
 
-
             Else
 
-                My.Computer.FileSystem.WriteAllText(path,
-                                                    "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
+                My.Computer.FileSystem.WriteAllText(path, "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
                                                     "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine & ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
@@ -295,36 +282,22 @@ Public Class frm_Reconcile
                                                     "".PadLeft(100, "-") & ControlChars.NewLine, True)
             Next item
 
-
             'advises it is going to return to main form.
-            MessageBox.Show("Reconcilliation Complete." & ControlChars.NewLine & "The form will now close and return to the main form", _
-                   "Comptime Calculator", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Reconcilliation Complete." & ControlChars.NewLine &
+                            "The form will now close and return to the main form",
+                            "Comptime Calculator", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             'if successful returns to main form
             Me.Close()
             frm_Main.Show()
 
         Else
-            MessageBox.Show("Make sure you have a previous year to reconcile", "Important", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Make sure you have a previous year to reconcile",
+                            "Important", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 
             Me.btnClearPrev.Focus()
 
         End If
-
-    End Sub
-
-    Private Sub txtYear_Enter(sender As Object, e As EventArgs) Handles txtYear.Enter
-
-        Me.txtYear.SelectAll()
-
-    End Sub
-
-
-    Private Sub txtYear_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
-
-        Me.libxPreview.Items.Clear()
-        Me.libxOrig.Items.Clear()
-
 
     End Sub
 
@@ -335,5 +308,19 @@ Public Class frm_Reconcile
 
     End Sub
 
-   
+    '---------------------- Text Change / Enter Events ----------------------------------
+
+    Private Sub txtYear_Enter(sender As Object, e As EventArgs) Handles txtYear.Enter
+
+        Me.txtYear.SelectAll()
+
+    End Sub
+
+    Private Sub txtYear_TextChanged(sender As Object, e As EventArgs) Handles txtYear.TextChanged
+
+        Me.libxPreview.Items.Clear()
+        Me.libxOrig.Items.Clear()
+
+    End Sub
+
 End Class

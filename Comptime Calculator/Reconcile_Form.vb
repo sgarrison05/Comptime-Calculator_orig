@@ -12,6 +12,8 @@ Public Class frm_Reconcile
     Dim searchyearorig As String
     Dim temp As String
 
+    '----------------------------- Events -------------------------------------------------
+
     Private Sub frm_Reconcile_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         'default selects the previous year
@@ -71,7 +73,7 @@ Public Class frm_Reconcile
 
     End Sub
 
-    '--------------------- Button Click Events -----------------------------------------
+    '--------------------- Buttons and Click Events ----------------------------------------
 
     Private Sub btnExit_Click(sender As System.Object, e As System.EventArgs) Handles btnExit.Click
 
@@ -308,7 +310,11 @@ Public Class frm_Reconcile
 
     End Sub
 
-    '---------------------- Text Change / Enter Events ----------------------------------
+    '--------------------- Private Functions and Subroutines -------------------------------
+
+
+
+    '---------------------- Individual Field Objects ---------------------------------------
 
     Private Sub txtYear_Enter(sender As Object, e As EventArgs) Handles txtYear.Enter
 

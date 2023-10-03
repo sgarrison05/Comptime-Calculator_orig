@@ -2,7 +2,7 @@
 'Purpose                To calculate comptime time earned or spent
 '                       in a particular instance
 'Created By             Shon Garrison, December 2008
-'Updated Last           September 2023
+'Updated Last           October 2023
 
 'Update Notes:          Added the ability to use straight or comp time.
 '                       Before reformat
@@ -119,15 +119,7 @@ Public Class frm_Main
                 newbalLabel.Text = "0.00"
                 calcearnedTextBox.Text = "Ready"
 
-                'ability to detect 50 hours csr for warning
-                If Me.prevbalLabel.Text >= 50.0 Then
-                    Me.prevbalLabel.ForeColor = Color.Red
-                    Me.warningLbl.Show()
-                Else
-                    Me.warningLbl.Hide()
-                    Me.prevbalLabel.ForeColor = Color.Black
-
-                End If
+                MyWarning()
 
             End If
 
@@ -156,15 +148,7 @@ Public Class frm_Main
                     newbalLabel.Text = "0.00"
                     calcearnedTextBox.Text = "Ready"
 
-                    'ability to detect 50 hours csr for warning
-                    If Me.prevbalLabel.Text >= 50.0 Then
-                        Me.prevbalLabel.ForeColor = Color.Red
-                        Me.warningLbl.Show()
-                    Else
-                        Me.warningLbl.Hide()
-                        Me.prevbalLabel.ForeColor = Color.Black
-
-                    End If
+                    MyWarning()
 
                 ElseIf init_bal_decision = Windows.Forms.DialogResult.No Then
                     Me.Show()
@@ -193,8 +177,9 @@ Public Class frm_Main
         Dim my_another As DialogResult
 
         'It will ask to you append file.
-        my_apply = MessageBox.Show("Do you wish to add to new balance to bank?", title, MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question)
+        my_apply = MessageBox.Show("Do you wish to add to new balance to bank?",
+                                   title, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
         If my_apply = Windows.Forms.DialogResult.Yes Then
 
             'make calculations
@@ -214,6 +199,8 @@ Public Class frm_Main
             line = Convert.ToString(previous)
             caseno = caseComboBox.Text
             curdate = accruedDateTimePicker.Text
+
+            MyLabels()
 
             'If Comptime file exists, the prog writes current balance text file
             If My.Computer.FileSystem.FileExists(cpath) Then
@@ -382,17 +369,7 @@ Public Class frm_Main
         'Convert the data from the Previous Balance Label and store it in line variable
         line = Convert.ToString(previous)
 
-        'If statement to determine straight or comptime.
-        atime = Me.sctComboBox.Text
-
-        If atime.Contains("Straight") Then
-            tlable = "Straight"
-        ElseIf atime.Contains("Comp") Then
-            tlable = "Comp"
-        Else
-            tlable = "n/a"
-
-        End If
+        MyLabels()
 
         ' If Comptime Directory exists, writes to the file.
         If My.Computer.FileSystem.DirectoryExists(cdirectory) Then
@@ -462,17 +439,7 @@ Public Class frm_Main
                 takenTextBox.Text = "0.00"
             End If
 
-            'If statement to determine straight or comptime.
-            atime = Me.sctComboBox.Text
-
-            If atime.Contains("Straight") Then
-                tlable = "Straight"
-            ElseIf atime.Contains("Comp") Then
-                tlable = "Comp"
-            Else
-                tlable = "n/a"
-
-            End If
+            MyLabels()
 
             'Convert Input
             isEarned = Decimal.TryParse(earnedTextBox.Text, earned)
@@ -530,19 +497,7 @@ Public Class frm_Main
                 earnedTextBox.Text = "0.00"
             End If
 
-            'If statement to determine straight or comptime.
-            atime = Me.sctComboBox.Text
-
-            If atime.Contains("Straight") Then
-                tlable = "Straight"
-
-            ElseIf atime.Contains("Comp") Then
-                tlable = "Comp"
-
-            Else
-                tlable = "n/a"
-
-            End If
+            MyLabels()
 
             'Convert input
             isEarned = Decimal.TryParse(earnedTextBox.Text, earned)
@@ -608,8 +563,8 @@ Public Class frm_Main
         'declares variables
         Dim my_choice As DialogResult
 
-        my_choice = MessageBox.Show("Do you wish to add to new balance to the bank?", title, MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question)
+        my_choice = MessageBox.Show("Do you wish to add to new balance to the bank?",
+                                    title, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If my_choice = Windows.Forms.DialogResult.Yes Then
             'declare block variables
             Dim curdate As String
@@ -628,6 +583,8 @@ Public Class frm_Main
             caseno = caseComboBox.Text
             curdate = accruedDateTimePicker.Text
             line2 = Convert.ToString(previous)
+
+            MyLabels()
 
             'Write current balance text file
             If my_choice = Windows.Forms.DialogResult.Yes And My.Computer.FileSystem.FileExists(cpath) Then
@@ -661,50 +618,18 @@ Public Class frm_Main
                 Separation()
             End If
 
-            calcearnedTextBox.Text = ""
-            calcearnedTextBox.Text = "Ready"
-            newbalLabel.Text = "0.00"
-            earnedTextBox.Clear()
-            caseComboBox.SelectedItem = "[Enter One]"
-            sctComboBox.SelectedItem = "Straight Time (X 1.0)"
-            takenTextBox.Clear()
-            accruedRadioButton.Select()
-            accruedDateTimePicker.Focus()
-            Me.btnApply.Enabled = False
+            CleanHouse()
 
-            'ability to detect 50 hours csr for warning
-            If Me.prevbalLabel.Text >= 50.0 Then
-                Me.prevbalLabel.ForeColor = Color.Red
-                Me.warningLbl.Show()
-            Else
-                Me.warningLbl.Hide()
-                Me.prevbalLabel.ForeColor = Color.Black
-
-            End If
+            MyWarning()
 
         Else : my_choice = Windows.Forms.DialogResult.No
+
             Me.Show()
             newbalance = 0D
-            newbalLabel.Text = "0.00"
-            calcearnedTextBox.Text = ""
-            calcearnedTextBox.Text = "Ready"
-            caseComboBox.SelectedItem = "[Enter One]"
-            sctComboBox.SelectedItem = "Straight Time (X 1.0)"
-            earnedTextBox.Clear()
-            takenTextBox.Clear()
-            accruedRadioButton.Select()
-            accruedDateTimePicker.Focus()
-            Me.btnApply.Enabled = False
 
-            'ability to detect 50 hours csr for warning
-            If Me.prevbalLabel.Text >= 50.0 Then
-                Me.prevbalLabel.ForeColor = Color.Red
-                Me.warningLbl.Show()
-            Else
-                Me.warningLbl.Hide()
-                Me.prevbalLabel.ForeColor = Color.Black
+            CleanHouse()
 
-            End If
+            MyWarning()
 
         End If
     End Sub
@@ -715,36 +640,23 @@ Public Class frm_Main
         Dim my_result As DialogResult
 
         my_result = MessageBox.Show("Are you sure that you are ready to exit?", title,
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If my_result = Windows.Forms.DialogResult.No Then
+
             Me.Show()
-            newbalLabel.Text = "0.00"
-            calcearnedTextBox.Text = "Ready"
-            caseComboBox.SelectedItem = "[Enter One]"
-            sctComboBox.SelectedItem = "Straight Time (X 1.0)"
-            earnedTextBox.Clear()
-            takenTextBox.Clear()
-            accruedRadioButton.Select()
-            newbalance = 0D
-            accruedDateTimePicker.Focus()
-            Me.btnApply.Enabled = False
 
-            'ability to detect 50 hours csr for warning
-            If Me.prevbalLabel.Text >= 50.0 Then
-                Me.prevbalLabel.ForeColor = Color.Red
-                Me.warningLbl.Show()
-            Else
-                Me.warningLbl.Hide()
-                Me.prevbalLabel.ForeColor = Color.Black
+            CleanHouse()
 
-            End If
+            MyWarning()
 
         Else : my_result = Windows.Forms.DialogResult.Yes
             If My.Computer.FileSystem.FileExists(cpath) Then
+
                 Me.Close()
 
             Else : CreateMyPaths()
+
                 Me.Close()
 
             End If
@@ -755,6 +667,51 @@ Public Class frm_Main
     Private Sub Separation()
 
         My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+
+    End Sub
+
+    Private Sub MyLabels()
+
+        'If statement to determine straight, comptime, or n/a.
+        atime = Me.sctComboBox.Text
+
+        If atime.Contains("Straight") Then
+            tlable = "Straight"
+        ElseIf atime.Contains("Comp") Then
+            tlable = "Comp"
+        Else
+            tlable = "n/a"
+
+        End If
+
+    End Sub
+
+    Private Sub MyWarning()
+
+        'ability to detect 50 hours csr for warning
+        If Me.prevbalLabel.Text >= 50.0 Then
+            Me.prevbalLabel.ForeColor = Color.Red
+            Me.warningLbl.Show()
+        Else
+            Me.warningLbl.Hide()
+            Me.prevbalLabel.ForeColor = Color.Black
+
+        End If
+
+    End Sub
+
+    Private Sub CleanHouse()
+
+        newbalLabel.Text = "0.00"
+        calcearnedTextBox.Text = ""
+        calcearnedTextBox.Text = "Ready"
+        caseComboBox.SelectedItem = "[Enter One]"
+        sctComboBox.SelectedItem = "Comp Time (X 1.5)"
+        earnedTextBox.Clear()
+        takenTextBox.Clear()
+        accruedRadioButton.Select()
+        accruedDateTimePicker.Focus()
+        Me.btnApply.Enabled = False
 
     End Sub
 

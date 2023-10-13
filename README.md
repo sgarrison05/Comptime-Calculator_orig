@@ -4,12 +4,12 @@
 
 By Shon Garrison
 
-Originally designed as part of my final projectd in programming at Lamar State-College
-Orange in 2009, it became in the in-production software to keep track of comptime for
+Originally designed as part of my final projectd in programming at Lamar State College-Orange
+in 2009, it became in the in-production software to keep track of comptime for
 several years. It was updated over the years to include straight/comptime ability that
 eliminated the need for the chief's version (straight only).  It was eventually
 replaced by version 5.0 that was a complete revamp and re-imagine so that the program
-was brought up to county policy.  
+could be brought up to county policy.  
 
 ## Program Overview:
 

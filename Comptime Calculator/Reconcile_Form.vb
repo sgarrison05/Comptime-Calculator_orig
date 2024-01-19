@@ -193,7 +193,8 @@ Public Class frm_Reconcile
                                                     "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
                                                     "Personal Comptime for " & frm_Main.user &
-                                                    " for year " & txtYear.Text.ToString & ControlChars.NewLine & ControlChars.NewLine &
+                                                    " for year " & txtYear.Text.ToString & ControlChars.NewLine &
+                                                    ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
                                                     "CaseNo." & Strings.Space(14) &
                                                     "Earned(+)" & Strings.Space(12) &
@@ -212,7 +213,8 @@ Public Class frm_Reconcile
                                                     "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
                                                     "Personal Comptime for " & frm_Main.user &
-                                                    " for year " & txtYear.Text.ToString & ControlChars.NewLine & ControlChars.NewLine &
+                                                    " for year " & txtYear.Text.ToString & ControlChars.NewLine &
+                                                    ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
                                                     "CaseNo." & Strings.Space(14) &
                                                     "Earned(+)" & Strings.Space(12) &
@@ -241,7 +243,8 @@ Public Class frm_Reconcile
                 My.Computer.FileSystem.WriteAllText(path, String.Empty, False)
                 My.Computer.FileSystem.WriteAllText(path, "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
-                                                    "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine & ControlChars.NewLine &
+                                                    "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine &
+                                                    ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
                                                     "CaseNo." & Strings.Space(14) &
                                                     "Earned(+)" & Strings.Space(12) &
@@ -259,7 +262,8 @@ Public Class frm_Reconcile
 
                 My.Computer.FileSystem.WriteAllText(path, "Orange County Juvenile Probation Dept." & ControlChars.NewLine &
                                                     "---------------------------------------" & ControlChars.NewLine &
-                                                    "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine & ControlChars.NewLine &
+                                                    "Personal Comptime Account for: " & frm_Main.user & ControlChars.NewLine &
+                                                    ControlChars.NewLine &
                                                     "Date Entered" & Strings.Space(7) &
                                                     "CaseNo." & Strings.Space(14) &
                                                     "Earned(+)" & Strings.Space(12) &

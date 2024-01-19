@@ -124,18 +124,21 @@ Public Class frm_Main
             End If
 
         Else 'sets up the comptime back in the specified path
-            my_decision = MessageBox.Show _
-            ("The current comptime balance file does not exist.  This is your comptime bank, would you like to create it?",
-            "Comptime Calculator", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+            my_decision = MessageBox.Show("The current comptime balance file does not exist." & vbCrLf &
+                                           "This is your comptime bank, would you like to create it?",
+                                           "Comptime Calculator", MessageBoxButtons.YesNo,
+                                           MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
 
             If my_decision = DialogResult.Yes Then
                 Dim init_bal_decision As DialogResult
-                init_bal_decision = MessageBox.Show("Do you have an current balance to enter?", title, MessageBoxButtons.YesNo,
+                init_bal_decision = MessageBox.Show("Do you have an current balance to enter?",
+                                                    title, MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question)
 
                 If init_bal_decision = Windows.Forms.DialogResult.Yes Then
                     Do Until IsNumeric(prevbalLabel.Text) Or prevbalLabel.Text <> String.Empty
-                        prevbalLabel.Text = InputBox("Please enter current balance or click 'Ok' to go to calculator.", title, "0.00")
+                        prevbalLabel.Text = InputBox("Please enter current balance or click 'Ok' to go to calculator.",
+                                                     title, "0.00")
                         If Not IsNumeric(prevbalLabel.Text) Then
                             MessageBox.Show("Number must be numeric.", title, MessageBoxButtons.OK)
                         End If
@@ -294,7 +297,7 @@ Public Class frm_Main
             'If the user does not, then the program will direct user to exit.
         Else : my_apply = Windows.Forms.DialogResult.No
             my_another = MessageBox.Show("Do you want to make another calculation?", title,
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If my_another = Windows.Forms.DialogResult.Yes Then
                 Me.Show()
                 newbalLabel.Text = "0.00"
@@ -319,7 +322,8 @@ Public Class frm_Main
                 End If
 
             Else : my_another = Windows.Forms.DialogResult.No
-                MessageBox.Show("No calcuation will be made and the form will be reset. You may exit the program.", title,
+                MessageBox.Show("No calcuation will be made and the form will be reset." & vbCrLf &
+                                "You may exit the program.", title,
                                 MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Show()
                 newbalLabel.Text = "0.00"
@@ -462,7 +466,8 @@ Public Class frm_Main
                 calcearnedTextBox.Text = "Total accrued time to enter on affidavit = " &
                                         (calcearned).ToString("N2") & " hours" & ControlChars.NewLine &
                                         "=".PadLeft(80, "=") & ControlChars.NewLine &
-                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
+                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine &
+                                        ControlChars.NewLine &
                                         "Date Entered" & Strings.Space(14) &
                                         "CaseNo." & Strings.Space(14) &
                                         "Earned(+)" & Strings.Space(12) &
@@ -523,7 +528,8 @@ Public Class frm_Main
                 calcearnedTextBox.Text = "Total taken time to enter on affidavit = " &
                                         (taken).ToString("N2") &
                                         " hours" & ControlChars.NewLine & "-".PadLeft(80, "=") & ControlChars.NewLine &
-                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine & ControlChars.NewLine &
+                                        "Preview of Entry to Activity Sheet:" & ControlChars.NewLine &
+                                        ControlChars.NewLine &
                                         "Date Entered" & Strings.Space(14) &
                                         "CaseNo." & Strings.Space(14) &
                                         "Earned(+)" & Strings.Space(12) &
@@ -666,7 +672,8 @@ Public Class frm_Main
 
     Private Sub Separation()
 
-        My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+        My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") &
+                                            ControlChars.NewLine, True)
 
     End Sub
 

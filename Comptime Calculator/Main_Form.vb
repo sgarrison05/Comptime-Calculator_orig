@@ -148,6 +148,7 @@ Public Class frm_Main
 
             ' Keep prompting until a valid numeric balance is entered
             Dim balanceInput As String = String.Empty
+            Dim formattedValue As Decimal
             Do
                 balanceInput = InputBox("Please enter current balance or click 'Ok' to start at zero.",
                                         TITLE, "0.00")
@@ -156,8 +157,12 @@ Public Class frm_Main
                 End If
             Loop Until IsNumeric(balanceInput)
 
+            'conversion for two decimal places
+            Decimal.TryParse(balanceInput, formattedValue)
+            Dim output As String = formattedValue.ToString("N2")
+
             userName = InputBox("Please enter your name.", TITLE)
-            Me.prevbalLabel.Text = balanceInput
+            Me.prevbalLabel.Text = output
 
         Else
             Me.prevbalLabel.Text = "0.00"
@@ -272,7 +277,7 @@ Public Class frm_Main
             End If
 
             'If successful, make calculations
-            calcEarned = Math.Round(calcEarned * GetTimeMultiplier(), 2)
+            calcEarned = Math.Round(earned * GetTimeMultiplier(), 2)
             previewBalance = calcEarned + Convert.ToDecimal(prevbalLabel.Text)
             _newBalance = Math.Round(calcEarned - taken, 2)
             Me.newbalLabel.Text = Convert.ToString(_newBalance)
@@ -294,8 +299,8 @@ Public Class frm_Main
                 Return
             End If
 
-            calcEarned = Math.Round(calcEarned * GetTimeMultiplier(), 2)
-            _newBalance = Math.Round(_newBalance, 2)
+            calcEarned = Math.Round(earned * GetTimeMultiplier(), 2)
+            _newBalance = Math.Round(calcEarned - taken, 2)
             previewBalance = _newBalance + Convert.ToDecimal(prevbalLabel.Text)
             newbalLabel.Text = Convert.ToString(_newBalance)
             calcearnedTextBox.Text = ""

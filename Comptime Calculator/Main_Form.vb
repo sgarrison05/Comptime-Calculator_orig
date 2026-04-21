@@ -356,7 +356,7 @@ Public Class frm_Main
 
     Private Sub Separation()
 
-        My.Computer.FileSystem.WriteAllText(cpath, "".PadLeft(100, "-") & ControlChars.NewLine, True)
+        My.Computer.FileSystem.WriteAllText(CPATH, "".PadLeft(100, "-") & ControlChars.NewLine, True)
 
     End Sub
 

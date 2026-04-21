@@ -10,9 +10,9 @@ Option Explicit On
 
 Public Class frm_Main
 
-    Private Const CDIRECTORY As String = "D:\Temp\Comptime"
-    Private Const CPATH As String = "D:\Temp\Comptime\comptimerun.txt"
-    Private Const TITLE As String = "Comptime Calculator"
+    Friend Const CDIRECTORY As String = "D:\Temp\Comptime"
+    Friend Const CPATH As String = "D:\Temp\Comptime\comptimerun.txt"
+    Friend Const TITLE As String = "Comptime Calculator"
     Private Const WARNING_HOURS As Decimal = 50D
     Private Const STRAIGHT_TIME_MULTIPLIER As Decimal = 1D
     Private Const COMP_TIME_MULTIPLIER As Decimal = 1.5D
@@ -24,7 +24,7 @@ Public Class frm_Main
     Private _timeTypeLabel As String
     Private _selectedTimeType As String
 
-    Private ReadOnly _heading As String =
+    Friend ReadOnly _heading As String =
         "Date Entered" & Strings.Space(7) &
         "CaseNo." & Strings.Space(14) &
         "Earned(+)" & Strings.Space(12) &
@@ -32,7 +32,7 @@ Public Class frm_Main
         "Taken(-)" & Strings.Space(6) &
         "Balance"
 
-    Private ReadOnly _columnDivider As String =
+    Friend ReadOnly _columnDivider As String =
         "-------------" & Strings.Space(6) &
         "----------" & Strings.Space(11) &
         "------------" & Strings.Space(9) &

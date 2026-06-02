@@ -66,4 +66,4 @@ v4.2.0 - Added Subroutine to address bug whereas the Comptime Folder nor Comtime
 
 v4.2.1 - Cleaned up variables and elemenated the need for the bank file.  Program now pulls bank from comptimerun.txt sheet as I always had intended it.
 
-v4.2.5 - Added Comp/Straight Time Difference.  Eliminated Chief's Ed. Removed email form from within program.  Google security became more difficult over time. You can just email the plain text form of the bank as an attachment outside the program.
+v4.3.0 - Added Comp/Straight Time Difference.  Eliminated Chief's Ed. Removed email form from within program.  Google security became more difficult over time. You can just email the plain text form of the bank as an attachment outside the program.
